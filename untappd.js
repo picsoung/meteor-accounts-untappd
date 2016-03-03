@@ -1,7 +1,7 @@
-Accounts.oauth.registerService('uber');
+Accounts.oauth.registerService('untappd');
 
 if (Meteor.isClient) {
-  Meteor.loginWithUber = function(options, callback) {
+  Meteor.loginWithUntappd = function(options, callback) {
     // support a callback without options
     if (! callback && typeof options === "function") {
       callback = options;
@@ -9,11 +9,11 @@ if (Meteor.isClient) {
     }
 
     var credentialRequestCompleteCallback = Accounts.oauth.credentialRequestCompleteHandler(callback);
-    Uber.requestCredential(options, credentialRequestCompleteCallback);
+    Untappd.requestCredential(options, credentialRequestCompleteCallback);
   };
 } else {
   Accounts.addAutopublishFields({
-    forLoggedInUser: ['services.uber'],
-    forOtherUsers: ['services.uber.id']
+    forLoggedInUser: ['services.Untappd'],
+    forOtherUsers: ['services.Untappd.id']
   });
 }
